@@ -4,26 +4,63 @@ using System.Text;
 
 namespace GameProject
 {
-    class GamersManager : Gamers, IGamersService
+    public class GamersManager : IGamersService
     {
-        public void Add()
+         IGamerCheckService _gamerCheckService;
+
+        public GamersManager(IGamerCheckService gamerCheckService)
         {
-            throw new NotImplementedException();
+            _gamerCheckService = gamerCheckService;
+        }
+        Gamer[]  Gamers;
+
+            public GamersManager()
+        {
+            Gamers = new Gamer[0];
+        }
+        public void Add(Gamer gamer)
+        {
+            Gamer[] tempArray = Gamers;
+            Gamers = new Gamer[Gamers.Length + 1];
+            for (int i = 0; i < tempArray.Length; i++)
+            {
+                Gamers[i] = tempArray[i];
+                Console.WriteLine("This game is added" + Gamers[i]);
+            }
+            Gamers[Gamers.Length - 1] = gamer;
         }
 
-        public void Delete()
+        public void Delete(Gamer gamer)
         {
-            throw new NotImplementedException();
+            Gamer[] gamers = Gamers;
+            Gamers = new Gamer[Gamers.Length - 1];
+            for (int i = 0; i < Gamers.Length; i++)
+            {
+                Gamers[i] = Gamers[Gamers.Length - 1];
+                Console.WriteLine("This game is deleted" + Gamers[i]);
+            }
         }
 
-        public void Save()
+        public void Save(Gamer gamer)
         {
-            throw new NotImplementedException();
+            if (_gamerCheckService.CheckIfRealPerson(gamer))
+            {
+                Console.WriteLine("Gamer is saved : " + gamer.FirstName);
+            }
+            else
+            {
+                throw new Exception("Not a valid person");
+            }
+            
         }
 
-        public void Update()
+        public void Update(Gamer gamer)
         {
-            throw new NotImplementedException();
+            int i;
+            for(i = 0; i<gamer.Id; i++)
+            {
+                Console.WriteLine("The gamer is updated : " );
+            }
         }
     }
 }

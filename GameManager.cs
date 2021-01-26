@@ -4,62 +4,66 @@ using System.Text;
 
 namespace GameProject
 {
-    class GameManager : GameProp, IGameService
+    public class GameManager : IGameService
     {
 
-        GameProp[] GameProps;
+        Game[] Games;
 
         public GameManager()
         {
-            GameProps = new GameProp[0];
+            Games = new Game[0];
         }
-        public void Add(GameProp gameProp)
+        public void Add(Game game)
         {
-            GameProp[] tempArray = GameProps;
-            GameProps = new GameProp[GameProps.Length + 1];
+            Game[] tempArray = Games;
+            Games = new Game[Games.Length + 1];
             for (int i = 0; i < tempArray.Length; i++)
             {
-                GameProps[i] = tempArray[i];
-                Console.WriteLine("This game is added" + GameProps[i]);
+                Games[i] = tempArray[i];
+                Console.WriteLine("This game is added" + Games[i]);
             }
-            GameProps[GameProps.Length - 1] = gameProp;
+            Games[Games.Length - 1] = game;
         }
 
-        public void Delete(GameProp gameProp)
+        public void Delete(Game game)
         {
-            GameProp[] gameProps = GameProps;
-            GameProps = new GameProp[GameProps.Length - 1];
-            for(int i = 0; i<GameProps.Length; i++)
+            Game[] games = Games;
+            Games = new Game[Games.Length - 1];
+            for(int i = 0; i<Games.Length; i++)
             {
-                GameProps[i] = GameProps[GameProps.Length - 1];
-                Console.WriteLine("This game is deleted" + GameProps[i]);
+                Games[i] = Games[Games.Length - 1];
+                Console.WriteLine("This game is deleted" + Games[i]);
             }
         }
 
-        public void Sales(GameProp[] gameProps)
+        public void Sales(Game[] games)
         {
-            foreach (var gameProp in gameProps)
+            foreach (var game in games)
             {
-                Console.WriteLine(gameProp.Name + "The game name is :  \n" + gameProp.Platform + "The game platform is :  \n" + gameProp.Type + "The game type is :  \n" 
-                    + gameProp.Price + "The game price is : $" );
+                Console.WriteLine(game.Name + "The game name is :  \n" + game.Platform + "The game platform is :  \n" + game.Type + "The game type is :  \n" 
+                    + game.Price + "The game price is : $" );
             }
         }
 
-        public void Save(GameProp gameProp)
+        public void Save(Game game)
         {
-            GameProp[] tempArray = GameProps;
-            GameProps = new GameProp[GameProps.Length + 1];
+            Game[] tempArray = Games;
+            Games = new Game[Games.Length + 1];
             for (int i = 0; i < tempArray.Length; i++)
             {
-                GameProps[i] = tempArray[i];
-                Console.WriteLine("This game is saved" + GameProps[i]);
+                Games[i] = tempArray[i];
+                Console.WriteLine("This game is saved" + Games[i]);
             }
-            GameProps[GameProps.Length - 1] = gameProp;
+            Games[Games.Length - 1] = game;
         }
 
-        public void Update()
+        public void Update(Game game)
         {
-            throw new NotImplementedException();
+            int i;
+            for (i = 0; i < game.GameId; i++)
+            {
+                Console.WriteLine("The gamer is updated : ");
+            }
         }
     }
 }

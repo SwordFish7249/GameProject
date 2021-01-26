@@ -4,12 +4,12 @@ using System.Text;
 
 namespace GameProject
 {
-    interface IGameService
+    public interface IGameService
     {
-        void Add();
-        void Delete();
-        void Update();
-        void Sales();
-        void Save();
+        void Add(Game game);
+        void Delete(Game game);
+        void Update(Game game);
+        void Sales(Game[] game);
+        void Save(Game game);
     }
 }

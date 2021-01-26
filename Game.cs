@@ -4,31 +4,12 @@ using System.Text;
 
 namespace GameProject
 {
-    class Game : IGameService
+    public class Game
     {
-        public void Add()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Sales()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update()
-        {
-            throw new NotImplementedException();
-        }
+        public int GameId { get; set; }
+        public float Price { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Platform { get; set; }
     }
 }

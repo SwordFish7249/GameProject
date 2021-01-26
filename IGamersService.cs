@@ -4,11 +4,11 @@ using System.Text;
 
 namespace GameProject
 {
-    interface IGamersService
+    public interface IGamersService
     {
-        void Add();
-        void Update();
-        void Delete();
-        void Save();
+        void Add(Gamer gamer);
+        void Update(Gamer gamer);
+        void Delete(Gamer gamer);
+        void Save(Gamer gamer);
     }
 }
